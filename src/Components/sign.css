@@ -1,0 +1,45 @@
+#form3Example1{
+  width: 100%;
+}
+
+#form3Example2{
+    width: 100%;
+}
+
+#heads{
+    margin-top: 10px;
+    padding-top: 30px;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+#Form-Sign{
+    background-image: url(https://as2.ftcdn.net/jpg/01/78/70/05/1000_F_178700543_qHrrNIpN5ANiegsiFah4C9SwArDe7Ipo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+}
+
+#button{
+    margin-left: 37.5%;
+}
+
+#pp{
+    color: white;   
+}
+
+#form3Example3{
+    width: 16%;
+}
+
+#form3Example4{
+    width: 16%;
+}
+
+#pl{
+    text-align: center;
+
+}
+
+

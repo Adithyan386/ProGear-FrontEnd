@@ -1,0 +1,49 @@
+/* Ensure the form is responsive */
+#fo1 {
+    max-width: 400px;
+    width: 100%;
+    background-image: url(https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg);
+  }
+  
+  #head {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  #but {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  #but:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  #pl {
+    font-size: 0.9rem;
+  }
+  
+  .goo {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Add media queries for smaller screens */
+  @media (max-width: 576px) {
+    #fo1 {
+      padding: 1rem;
+    }
+  
+    #head {
+      font-size: 1.25rem;
+    }
+  
+    #but {
+      font-size: 0.9rem;
+    }
+  
+    #pl {
+      font-size: 0.85rem;
+    }
+  }
+  

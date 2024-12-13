@@ -1,0 +1,12 @@
+.home{
+    background-image: url(https://wallpapercave.com/wp/wp6977321.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+}
+
+.hed{
+    color: aliceblue;
+    padding-top: 200px;
+    margin-left: 50px;
+}

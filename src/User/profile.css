@@ -1,0 +1,13 @@
+#form1{
+    width: 25%;
+}
+
+#photo{
+    width: 25%;
+}
+
+#userP{
+    background-image: url(https://w7.pngwing.com/pngs/929/974/png-transparent-blue-stripe-screenshot-blue-sky-daytime-sky-blue-background-blue-angle-other-thumbnail.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

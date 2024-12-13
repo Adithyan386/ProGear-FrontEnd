@@ -1,0 +1,41 @@
+#add-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  #headsAdd {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="file"],
+  button {
+    height: 45px;
+  }
+  
+  button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    input[type="text"],
+    input[type="file"],
+    button {
+      width: 75%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    input[type="text"],
+    input[type="file"],
+    button {
+      width: 100%;
+    }
+  }
+  

@@ -66,7 +66,7 @@ try {
             <td>{items.productID.productname}</td>
             <td><img 
             src={`${baseURL}/uploads/${items.productID.image}`} 
-            alt="IMAGE" /></td>
+            alt="" /></td>
             <td>{items.Status}</td>
             <td>${items.Amount/100}</td>
             <td><button className='btn btn-dark'><i class="fa-solid fa-download" onClick={()=>paymentSlip(items._id)}></i></button></td>

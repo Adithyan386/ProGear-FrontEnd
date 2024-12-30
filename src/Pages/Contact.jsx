@@ -13,7 +13,6 @@ function Contact() {
   const handleFeedBack = async(e)=>{
     e.preventDefault()
   
-    const {username,review,email} = FeedBacks
   
     const token = sessionStorage.getItem('token')
   

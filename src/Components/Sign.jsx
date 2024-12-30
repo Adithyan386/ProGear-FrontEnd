@@ -77,6 +77,7 @@ function Sign() {
       otp
     }
     const response = await otpResending(reqbody)
+    console.log(response);
   }
 
  

@@ -1,53 +1,89 @@
-import React, { useState } from 'react'
-import { Button, Form, Modal } from 'react-bootstrap';
-import './Uedit.css'
+import React, { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import "./Uedit.css";
 
 function Useredit() {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
-    <Button  className='mx-3' variant="primary" onClick={handleShow}>
-        Edit
-    </Button>
+<div>
+      {/* Button to Open Modal */}
+      <Button variant="primary" className="me-2" onClick={handleShow}>
+        Edit Profile
+      </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      {/* Edit Profile Modal */}
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <div className="mb-4">
-                        <label htmlFor="form1" className="form-label">UserName</label>
-                        <input type="text" className="form-control" id="formE1" />
-                    </div>
-                    <div className="row">
-                        <div className="col-md-6 mb-4">
-                            <label htmlFor="form1" className="form-label">Phone</label>
-                            <input type="text" className="form-control" id="formE1" />
-                        </div>
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="form1" className="form-label">Price</label>
-                        <input type="text" className="form-control" id="formE1" />
-                    </div>
-                    <Form.Group controlId="formFileMultiple" className="mb-3">
-                        <Form.Label>Product Image</Form.Label>
-                        <Form.Control type="file" multiple />
-                    </Form.Group>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>FirstName</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value=""
+                placeholder="Enter your name"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>SecondName</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value=""
+                placeholder="Enter your name"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                type="tel"
+                name="phone"
+                value=""
+                placeholder="Enter your phone number"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                name="address"
+                value=""
+                placeholder="Enter your address"
+              />
+            </Form.Group>
 
+            <Form.Group className="mb-3">
+              <Form.Label>Gender</Form.Label>
+              <Form.Select
+                name="gender"
+                value=""
+              >
+                <option value="Not Specified">Not Specified</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </Form.Select>
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="dark" onClick={handleClose}>
+            Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="dark" onClick={handleShow}>
             Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
-  )
+    </div>    </>
+  );
 }
 
-export default Useredit
+export default Useredit;

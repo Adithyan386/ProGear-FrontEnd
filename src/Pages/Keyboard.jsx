@@ -20,6 +20,13 @@ function Keyboard({category}) {
   },[category])
   return (
     <Container className="py-4">
+        {/* <Form.Control
+            type="text"
+            placeholder="Search for products..."
+            value=''
+            className="shadow-sm"
+            /> */}
+
       <Row className="">   
         { 
           products?.map((item, index)=>(
@@ -41,8 +48,8 @@ function Keyboard({category}) {
                <Card.Body>
                  <Card.Title><Link to={`/details1/${item._id}`} style={{textDecoration:'none', color:'black'}}>{item.productname}</Link></Card.Title>
                  <Card.Text>
-                  {item.description}
-                </Card.Text>
+                 <h6>&#8377;{item.price}</h6>                
+                 </Card.Text>
                </Card.Body>
              </Card>
            </Col>

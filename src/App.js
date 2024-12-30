@@ -23,6 +23,8 @@ import UserProfile from './User/UserProfile';
 import UserOrder from './User/UserOrder';
 import OrderPage from './Pages/OrderPage';
 import Productdetails from './Pages/Productdetails';
+import ForgotPassword from './Pages/ForgotPassword';
+import PasswordChange from './Pages/PasswordChange';
 function App() {
   return (
     <>
@@ -51,10 +53,10 @@ function App() {
           <Route path='/cart' element={<Cart/>}></Route>
           <Route path='/profile' element={<UserProfile/>}></Route>
           <Route path='/userorder' element={<UserOrder/>}></Route>
-          <Route path='/orderpage'element={<OrderPage/>}></Route>
+          <Route path='/orderpage/:id'element={<OrderPage/>}></Route>
           <Route path='/details1/:id'element={<Productdetails/>}></Route>
-
-
+          <Route path='/forPass' element={<ForgotPassword/>}></Route>
+          <Route path='/ResetPass/:token' element={<PasswordChange/>}></Route>
       </Routes>
       <Footer/>
 

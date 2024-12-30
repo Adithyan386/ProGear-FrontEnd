@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
-import { login } from '../Service/AllApi';
+import { GoogleSgin, login } from '../Service/AllApi';
+import { LoginContext } from '../Context';
 function Login() {
+
+  const {setLoginRespones} = useContext(LoginContext)
   
   const navigate = useNavigate()
   const [user,setuser] = useState({
@@ -22,13 +24,14 @@ function Login() {
 
       console.log(response);
           if(response.status === 200){
+            setLoginRespones(response)
             sessionStorage.setItem("user",JSON.stringify(response.data.prevoisusers))
             sessionStorage.setItem("token",response.data.token)
 
             if(response.data.prevoisusers.role==1){
               navigate('/admin')
             }else{
-              navigate('/home')
+              navigate('/')
             }
           } else if(response.status === 404){
             alert(response.response.data.message)
@@ -39,6 +42,24 @@ function Login() {
     }
 
 
+  }
+
+  const GoogleWithSgin = async(token)=>{
+    const reqbody = {
+      GoogleToken:token
+    }
+
+    const response  = await GoogleSgin(reqbody)
+
+    if(response.status == 200){
+      setLoginRespones(response)
+      sessionStorage.setItem('user', JSON.stringify(response.data.User))
+      sessionStorage.setItem('token',response.data.token)
+      alert('Google Sgin In SucessFully')
+      navigate('/')
+    }else{
+      alert('Server Error')
+    }
   }
 
   return (
@@ -82,15 +103,14 @@ function Login() {
           
           {/* Forgot Password Link */}
           <div className="mb-4 text-center">
-            <a href="#!" className="text-decoration-none">Forgot password?</a>
+            <Link to={'/forPass'} style={{textDecoration:'none', color:'white'}}>Forgot password?</Link>
           </div>
           
           {/* Google Login */}
           <div className="goo rounded d-flex justify-content-center mb-4">
             <GoogleLogin 
               onSuccess={(credentialResponse) => {
-              const decoded = jwtDecode(credentialResponse.credential);
-              console.log(decoded);
+                GoogleWithSgin(credentialResponse.credential)
               }}
               onError={() => {
                 console.log('Login Failed');

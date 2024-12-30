@@ -1,0 +1,26 @@
+#search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%; /* Ensures it's centered across the page */
+}
+
+.search {
+    display: inline-block;
+    position: relative;
+  }
+  
+ .search input[type="text"] {
+    width: 700px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(78, 153, 233, 0.8); /* Focus state for input */
+}

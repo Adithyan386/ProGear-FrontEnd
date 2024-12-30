@@ -5,11 +5,16 @@ import App from './App';
 import './bootstrap.min.css'
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import LoginProvider from './Context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
   <BrowserRouter>
-    <GoogleOAuthProvider clientId='21016094032-e7m7ob50f5hb0f1mqatgpd7sea20gce1.apps.googleusercontent.com'><App /></GoogleOAuthProvider>
+    <GoogleOAuthProvider clientId='21016094032-e7m7ob50f5hb0f1mqatgpd7sea20gce1.apps.googleusercontent.com'>
+      <LoginProvider>
+      <App />
+      </LoginProvider>
+    </GoogleOAuthProvider>
   </BrowserRouter>
   </React.StrictMode>
 );

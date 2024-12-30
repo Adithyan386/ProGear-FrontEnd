@@ -1,12 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
-import Razer1 from '../Assets/razer1 (1).jpg';
-import Razer2 from '../Assets/razer1 (3).jpg';
 import { Link, useParams } from "react-router-dom";
+import { addcart, getproductdetails, Reviews } from "../Service/AllApi";
+import { baseURL } from "../Service/baseUrl";
 
 function Productdetails() {
+  
+  const [review, setReview] = useState('')
+
+  const [product, setgetProduct] = useState({})
+
+  // const [cart, setcart] = useState({})
+
   const {id} = useParams()
-  console.log(id);
+
+  const getproduct = async()=>{
+    const response = await getproductdetails(id)
+    setgetProduct(response.data.productdetails)
+    // console.log(response)
+  }
+  // console.log(id);
+  
+
+  const handelCart = async()=>{
+    console.log('inside cart');
+    
+    const token = sessionStorage.getItem('token')
+    const userid = sessionStorage.getItem('user')
+    const user = JSON.parse(userid)?._id
+
+    const reqheader = {
+      'Authorization':`Bearer ${token}`,
+      "Content-Type":"application/json"
+    }
+    const reqbody = {
+      id,
+      count:1
+    }
+
+    const response = await addcart(user,reqbody,reqheader)
+    console.log(response)
+
+    if(response.status === 401){
+      alert('Authorization Failed Please Login.....!')
+
+    }else if(response.status === 200){
+      alert('Product Added to Cart...')
+    }
+  }
+  const handleReview = async(e)=>{
+    e.preventDefault()
+
+    const reqbody ={
+      productID: id,
+      review
+    }
+
+    const token  = sessionStorage.getItem('token')
+
+    const reqheader = {
+      'Authorization':`Bearer ${token}`,
+      "Content-Type":"application/json"
+    }
+
+    const response = await Reviews(reqbody, reqheader)
+    if(response.status == 200){
+      alert('Review Added')
+      setReview('')
+      getproduct()
+    }
+  }
+  useEffect(()=>{
+    getproduct()
+  },[])
+
   return (
     <div>
       <div className="container my-5">
@@ -17,16 +84,8 @@ function Productdetails() {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={Razer1}
+                  src={`${baseURL}/uploads/${product?.image}`}
                   alt="Razer Viper V3 Pro - Top View"
-                  style={{ height: "auto", maxHeight: "50vh" }}
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={Razer2}
-                  alt="Razer Viper V3 Pro - Angled View"
                   style={{ height: "auto", maxHeight: "50vh" }}
                 />
               </Carousel.Item>
@@ -36,27 +95,23 @@ function Productdetails() {
           {/* Product Information */}
           <div className="col-md-6">
             <h4 className="mb-3">
-              Razer Viper V3 Pro Wireless Esports Gaming Mouse: Symmetrical -
-              54g Lightweight - 8K Polling - 35K DPI Optical Sensor - Gen3
-              Optical Switches - 8 Programmable Buttons - 95 Hr Battery - White
+            {product?.productname}
             </h4>
             <p className="text-muted">
-              Category: <span className="fw-bold">Mouse</span>
+              Category: <span className="fw-bold">{product?.producttype}</span>
             </p>
             <p>
-              Designed for precision, control, and speed, the Razer Viper V3 Pro
-              ensures peak gaming performance with advanced features tailored
-              for esports professionals.
+              Price:{product?.price}
             </p>
             <p>
-              <strong>Brand:</strong> Razer
+              {product?.description}
             </p>
             <div className="d-flex flex-wrap gap-2 mt-3">
-              <Link to={'/orderpage'} className="btn btn-dark">
+              <Link to={`/orderpage/${id}`} className="btn btn-dark">
                 Buy Now
               </Link>
-              <button className="btn btn-dark">
-                <i className="fa-solid fa-cart-shopping"></i> Add to Cart
+              <button className="btn btn-dark" onClick={handelCart}>
+                <i className="fa-solid fa-cart-shopping" ></i> Add to Cart
               </button>
             </div>
           </div>
@@ -72,27 +127,7 @@ function Productdetails() {
           <div className="card-body">
             <form>
               {/* Rating Field */}
-              <div className="mb-3">
-                <label htmlFor="rating" className="form-label">
-                  Rating
-                </label>
-                <select
-                  className="form-select"
-                  id="rating"
-                  name="rating"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Choose a rating
-                  </option>
-                  <option value={1}>1 - Poor</option>
-                  <option value={2}>2 - Fair</option>
-                  <option value={3}>3 - Good</option>
-                  <option value={4}>4 - Very Good</option>
-                  <option value={5}>5 - Excellent</option>
-                </select>
-              </div>
-
+              
               {/* Feedback Field */}
               <div className="mb-3">
                 <label htmlFor="feedback" className="form-label">
@@ -105,14 +140,35 @@ function Productdetails() {
                   rows={4}
                   placeholder="Write your feedback here"
                   required
+                  onChange={(e)=>setReview(e.target.value)}
                 />
               </div>
 
               {/* Submit Button */}
               <div className="text-center">
-                <button type="submit" className="btn btn-success w-75">
+                <button type="submit" className="btn btn-success w-75"
+                onClick={(e)=>handleReview(e)}>
                   Submit
                 </button>
+              </div>
+              <div className="text-center">
+                  <h4>
+                    Reviews
+                  </h4>
+                  {
+                    product?.reviews?.map((r)=>(
+                      <>
+                      <p>
+                        {r.username}
+                      </p>
+                      <p>
+                        {r.review}
+                      </p>
+                      </>
+                    ))
+                    
+                  }
+                  
               </div>
             </form>
           </div>

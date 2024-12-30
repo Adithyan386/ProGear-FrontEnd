@@ -1,45 +1,35 @@
-#form3Example1{
-  width: 100%;
-}
-
-#form3Example2{
-    width: 100%;
-}
-
-#heads{
-    margin-top: 10px;
-    padding-top: 30px;
-    font-weight: 900;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: aliceblue;
-}
-
-#Form-Sign{
-    background-image: url(https://as2.ftcdn.net/jpg/01/78/70/05/1000_F_178700543_qHrrNIpN5ANiegsiFah4C9SwArDe7Ipo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 70vh;
-}
-
-#button{
-    margin-left: 37.5%;
-}
-
-#pp{
-    color: white;   
-}
-
-#form3Example3{
-    width: 16%;
-}
-
-#form3Example4{
-    width: 16%;
-}
-
-#pl{
-    text-align: center;
-
-}
-
-
+#Form-Sign {
+    max-width: 500px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+  }
+  #heads {
+    font-size: 1.5rem;
+  }
+  #button {
+    font-weight: bold;
+    background-color: #333;
+    border: none;
+  }
+  #button:hover {
+    background-color: #555;
+  }
+  @media (max-width: 576px) {
+    #Form-Sign {
+      padding: 15px;
+    }
+    #heads {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .container {
+    margin-top: 20px; /* Adjusts the top spacing */
+  }
+  
+  #button {
+    font-size: 16px; /* Ensures button text is readable on all screen sizes */
+  }
+  

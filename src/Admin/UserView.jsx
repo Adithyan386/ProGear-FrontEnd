@@ -1,41 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
+import { getAdminUser } from '../Service/AllApi'
 
 function UserView() {
+  const [viewUser, setviewUser] = useState([])
+
+  const UserViewadnmin = async()=>{
+    const token = sessionStorage.getItem('token')
+
+    const reqheader = {
+      'Authorization':`Bearer ${token}`,
+      "Content-Type":"application/json"
+    }
+
+    const response = await getAdminUser(reqheader)
+    console.log(response);
+    setviewUser(response.data)
+  }
+  useEffect(()=>{
+    UserViewadnmin()
+  },[])
   return (
     <>
-        <Table bg="dark" data-bs-theme="dark" responsive="sm">
+        <Table bg="" data-bs-theme="" responsive="sm">
         <thead>
           <tr>
             <th>NO</th>
             <th>User ID</th>
-            <th>UserName</th>
+            <th>FirstName</th>
+            <th>LastName</th>
             <th>E-Mail</th>
-            <th>Order</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
+          {
+            viewUser.map((user, index)=>(
+              <tr key={index}>
+              <td>{index+1}</td>
+              <td>{user._id}</td>
+              <td>{user.firstname}</td>
+              <td>{user.secondname}</td>
+              <td>{user.email}</td>
+            </tr>
+  
+            ))
+          }
+          
         </tbody>
       </Table>
     </>

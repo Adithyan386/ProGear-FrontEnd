@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Col, Container, Form, ListGroup, Row } from 'react-bootstrap'
+import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
 import './profile.css'
 import Useredit from './Useredit'
 
@@ -24,16 +24,19 @@ function UserProfile() {
             </Card.Body>
             <ListGroup className="list-group-flush">
             <ListGroup.Item>
-                <strong>Name:</strong> {"Not Available"}
+                <strong>FristName:</strong> 
               </ListGroup.Item>
               <ListGroup.Item>
-                <strong>Phone:</strong> {"Not Available"}
+                <strong>LastName:</strong> 
               </ListGroup.Item>
               <ListGroup.Item>
-                <strong>Address:</strong> { "Not Available"}
+                <strong>Phone:</strong>   
               </ListGroup.Item>
               <ListGroup.Item>
-                <strong>Gender:</strong> { "Not Specified"}
+                <strong>Address:</strong> 
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <strong>Gender:</strong> 
               </ListGroup.Item>
             </ListGroup>
             <Card.Body className="text-center">

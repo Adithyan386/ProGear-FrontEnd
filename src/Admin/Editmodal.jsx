@@ -20,7 +20,7 @@ function Editmodal({product}) {
   })
   
   const handleupdate = async()=>{
-    const {name,ptype,price,description,image} = edit
+    const {name,ptype,price,description} = edit
     if(!name || !ptype || !price || !description){
       alert('Please fill in all required fields.')
     }else{

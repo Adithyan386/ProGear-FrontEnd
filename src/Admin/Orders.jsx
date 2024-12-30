@@ -48,7 +48,7 @@ function Orders() {
               <td>{item.Amount/100}</td>
               <td><img 
                 src={`${baseURL}/uploads/${item.productID.image}`} 
-                alt="IMAGE" /></td>
+                alt="" /></td>
             </tr>
             ))
             }

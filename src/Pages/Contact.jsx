@@ -24,7 +24,7 @@ function Contact() {
   
     const response = await FeedBacks(feedback,reqheaher)
     console.log(response);
-    if(response.status == 200){
+    if(response.status === 200){
       alert('FeedBack Added')
       setfeedback('')
     }

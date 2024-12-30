@@ -28,7 +28,7 @@ function Login() {
             sessionStorage.setItem("user",JSON.stringify(response.data.prevoisusers))
             sessionStorage.setItem("token",response.data.token)
 
-            if(response.data.prevoisusers.role==1){
+            if(response.data.prevoisusers.role===1){
               navigate('/admin')
             }else{
               navigate('/')
@@ -51,7 +51,7 @@ function Login() {
 
     const response  = await GoogleSgin(reqbody)
 
-    if(response.status == 200){
+    if(response.status === 200){
       setLoginRespones(response)
       sessionStorage.setItem('user', JSON.stringify(response.data.User))
       sessionStorage.setItem('token',response.data.token)

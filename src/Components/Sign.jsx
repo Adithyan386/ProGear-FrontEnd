@@ -30,11 +30,11 @@ function Sign() {
       alert('Please fill in the form');
     } else {
       const res = await userRegister(user);
-      if (res.status == 200) {
+      if (res.status === 200) {
         alert('Registration Sucessful')
         setSteps(2)
 
-      } else if (res.status == 400) {
+      } else if (res.status === 400) {
         alert('Email Already Eixst')
       } else {
         alert('internal Server Error')
@@ -86,7 +86,7 @@ function Sign() {
 
      <>
      {
-        Steps == 1 ?
+        Steps === 1 ?
   
         <div className="container py-5">
           <form className="mt-5 mx-auto" id="Form-Sign">

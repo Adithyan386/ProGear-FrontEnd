@@ -64,7 +64,7 @@ function Productdetails() {
     }
 
     const response = await Reviews(reqbody, reqheader)
-    if(response.status == 200){
+    if(response.status === 200){
       alert('Review Added')
       setReview('')
       getproduct()
